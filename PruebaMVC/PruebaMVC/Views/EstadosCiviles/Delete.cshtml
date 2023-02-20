@@ -1,0 +1,72 @@
+﻿@model PruebaMVC.Models.tbEstadosCiviles
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tbEstadosCiviles</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.estad_descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estad_descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estad_Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estad_Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estad_FechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estad_FechaCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estad_FechaModificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estad_FechaModificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuaios.usu_Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuaios.usu_Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuaios1.usu_Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuaios1.usu_Usuario)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

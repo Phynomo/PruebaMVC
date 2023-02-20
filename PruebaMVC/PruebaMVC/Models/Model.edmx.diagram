@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9b68998321e84ae59e7edce277714e17" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="dbEventosModel.tbCiudades" Width="1.5" PointX="12.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbEventosModel.tbDepartamentos" Width="1.5" PointX="7.5" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbEventosModel.tbEmpleados" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbEventosModel.tbEstadosCiviles" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbEventosModel.tbEventoDetalle" Width="1.5" PointX="17.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbEventosModel.tbEventos" Width="1.5" PointX="9.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbEventosModel.tbOcupaciones" Width="1.5" PointX="7.5" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbEventosModel.tbParticipantes" Width="1.5" PointX="15" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbEventosModel.tbTiposEventos" Width="1.5" PointX="7.5" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbEventosModel.tbUsuaios" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbCiudades_dep_UsuarioCreacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbCiudades_dep_UsuarioModificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbEmpleados_tbCiudades_ciu_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbEstadosCiviles_tbCiudades_ciu_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbEventos_dbo_tbCiudades_ciu_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_ubicacion_tbDepartamentos_tbCiudades_dep_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbDepartamentos_dep_UsuarioCreacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbDepartamentos_dep_UsuarioModificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbEmpleados_tbOcupaciones_ocu_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbEmpleados_tbParticipantes_estad_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbEmpleados_UsuarioCreacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbEmpleados_UsuarioModificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbEventos_dbo_tbEmpleados_emp_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbUsuaios_tbEmpleados_emp_id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbEstadosCiviles_tbParticipantes_estad_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbEstadosCiviles_UsuarioCreacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbEstadosCiviles_UsuarioModificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbEventoDetalle_dbo_tbEventos_event_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbEventoDetalle_UsuarioCreacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbEventoDetalle_UsuarioModificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbEventoDetallea_dbo_tbParticipantes_par_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbEventos_dbo_tbTiposEventos" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbEventos_UsuarioCreacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbEventos_UsuarioModificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbOcupaciones_UsuarioCreacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbOcupaciones_UsuarioModificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbParticipantes_UsuarioCreacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbParticipantes_UsuarioModificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbTiposEventos_dep_UsuarioCreacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbTiposEventos_dep_UsuarioModificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbUsuaios_tbUsuaios_usu_usuarioCreacion" ManuallyRouted="false" />
+        <AssociationConnector Association="dbEventosModel.FK_dbo_tbUsuaios_tbUsuaios_usu_UsuarioModificacion" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

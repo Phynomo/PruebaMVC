@@ -1,0 +1,741 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbEventosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbCiudades">
+    <Key>
+      <PropertyRef Name="ciu_Id" />
+    </Key>
+    <Property Name="ciu_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ciu_descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="dep_Id" Type="Int32" />
+    <Property Name="ciu_Estado" Type="Boolean" />
+    <Property Name="usu_UsuarioCreacion" Type="Int32" />
+    <Property Name="ciu_FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="usu_UsuarioModificacion" Type="Int32" />
+    <Property Name="ciu_FechaModificacion" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tbUsuaios" Relationship="Self.FK_dbo_tbCiudades_dep_UsuarioCreacion" FromRole="tbCiudades" ToRole="tbUsuaios" />
+    <NavigationProperty Name="tbUsuaios1" Relationship="Self.FK_dbo_tbCiudades_dep_UsuarioModificacion" FromRole="tbCiudades" ToRole="tbUsuaios" />
+    <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_dbo_tbEmpleados_tbCiudades_ciu_Id" FromRole="tbCiudades" ToRole="tbEmpleados" />
+    <NavigationProperty Name="tbParticipantes" Relationship="Self.FK_dbo_tbEstadosCiviles_tbCiudades_ciu_Id" FromRole="tbCiudades" ToRole="tbParticipantes" />
+    <NavigationProperty Name="tbEventos" Relationship="Self.FK_dbo_tbEventos_dbo_tbCiudades_ciu_Id" FromRole="tbCiudades" ToRole="tbEventos" />
+    <NavigationProperty Name="tbDepartamentos" Relationship="Self.FK_dbo_ubicacion_tbDepartamentos_tbCiudades_dep_Id" FromRole="tbCiudades" ToRole="tbDepartamentos" />
+  </EntityType>
+  <EntityType Name="tbDepartamentos">
+    <Key>
+      <PropertyRef Name="dep_Id" />
+    </Key>
+    <Property Name="dep_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dep_descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="dep_Estado" Type="Boolean" />
+    <Property Name="usu_UsuarioCreacion" Type="Int32" />
+    <Property Name="dep_FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="usu_UsuarioModificacion" Type="Int32" />
+    <Property Name="dep_FechaModificacion" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tbCiudades" Relationship="Self.FK_dbo_ubicacion_tbDepartamentos_tbCiudades_dep_Id" FromRole="tbDepartamentos" ToRole="tbCiudades" />
+    <NavigationProperty Name="tbUsuaios" Relationship="Self.FK_dbo_tbDepartamentos_dep_UsuarioCreacion" FromRole="tbDepartamentos" ToRole="tbUsuaios" />
+    <NavigationProperty Name="tbUsuaios1" Relationship="Self.FK_dbo_tbDepartamentos_dep_UsuarioModificacion" FromRole="tbDepartamentos" ToRole="tbUsuaios" />
+  </EntityType>
+  <EntityType Name="tbEmpleados">
+    <Key>
+      <PropertyRef Name="emp_Id" />
+    </Key>
+    <Property Name="emp_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emp_PrimerNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="emp_SegundoNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="emp_PrimerApellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="emp_SegundoApellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="emp_Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="emp_FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="estad_Id" Type="Int32" Nullable="false" />
+    <Property Name="ciu_Id" Type="Int32" Nullable="false" />
+    <Property Name="emp_Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="emp_Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ocu_Id" Type="Int32" />
+    <Property Name="emp_Estado" Type="Boolean" />
+    <Property Name="usu_UsuarioCreacion" Type="Int32" />
+    <Property Name="emp_FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="usu_UsuarioModificacion" Type="Int32" />
+    <Property Name="emp_FechaModificacion" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tbCiudades" Relationship="Self.FK_dbo_tbEmpleados_tbCiudades_ciu_Id" FromRole="tbEmpleados" ToRole="tbCiudades" />
+    <NavigationProperty Name="tbOcupaciones" Relationship="Self.FK_dbo_tbEmpleados_tbOcupaciones_ocu_Id" FromRole="tbEmpleados" ToRole="tbOcupaciones" />
+    <NavigationProperty Name="tbEstadosCiviles" Relationship="Self.FK_dbo_tbEmpleados_tbParticipantes_estad_Id" FromRole="tbEmpleados" ToRole="tbEstadosCiviles" />
+    <NavigationProperty Name="tbUsuaios" Relationship="Self.FK_dbo_tbEmpleados_UsuarioCreacion" FromRole="tbEmpleados" ToRole="tbUsuaios" />
+    <NavigationProperty Name="tbUsuaios1" Relationship="Self.FK_dbo_tbEmpleados_UsuarioModificacion" FromRole="tbEmpleados" ToRole="tbUsuaios" />
+    <NavigationProperty Name="tbEventos" Relationship="Self.FK_dbo_tbEventos_dbo_tbEmpleados_emp_Id" FromRole="tbEmpleados" ToRole="tbEventos" />
+    <NavigationProperty Name="tbUsuaios2" Relationship="Self.FK_dbo_tbUsuaios_tbEmpleados_emp_id" FromRole="tbEmpleados" ToRole="tbUsuaios" />
+  </EntityType>
+  <EntityType Name="tbEstadosCiviles">
+    <Key>
+      <PropertyRef Name="estad_Id" />
+    </Key>
+    <Property Name="estad_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="estad_descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="estad_Estado" Type="Boolean" />
+    <Property Name="usu_UsuarioCreacion" Type="Int32" />
+    <Property Name="estad_FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="usu_UsuarioModificacion" Type="Int32" />
+    <Property Name="estad_FechaModificacion" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_dbo_tbEmpleados_tbParticipantes_estad_Id" FromRole="tbEstadosCiviles" ToRole="tbEmpleados" />
+    <NavigationProperty Name="tbParticipantes" Relationship="Self.FK_dbo_tbEstadosCiviles_tbParticipantes_estad_Id" FromRole="tbEstadosCiviles" ToRole="tbParticipantes" />
+    <NavigationProperty Name="tbUsuaios" Relationship="Self.FK_dbo_tbEstadosCiviles_UsuarioCreacion" FromRole="tbEstadosCiviles" ToRole="tbUsuaios" />
+    <NavigationProperty Name="tbUsuaios1" Relationship="Self.FK_dbo_tbEstadosCiviles_UsuarioModificacion" FromRole="tbEstadosCiviles" ToRole="tbUsuaios" />
+  </EntityType>
+  <EntityType Name="tbEventoDetalle">
+    <Key>
+      <PropertyRef Name="evde_Id" />
+    </Key>
+    <Property Name="evde_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="par_Id" Type="Int32" />
+    <Property Name="event_Id" Type="Int32" />
+    <Property Name="evde_Estado" Type="Boolean" />
+    <Property Name="usu_UsuarioCreacion" Type="Int32" />
+    <Property Name="evde_FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="usu_UsuarioModificacion" Type="Int32" />
+    <Property Name="evde_FechaModificacion" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tbEventos" Relationship="Self.FK_dbo_tbEventoDetalle_dbo_tbEventos_event_Id" FromRole="tbEventoDetalle" ToRole="tbEventos" />
+    <NavigationProperty Name="tbUsuaios" Relationship="Self.FK_dbo_tbEventoDetalle_UsuarioCreacion" FromRole="tbEventoDetalle" ToRole="tbUsuaios" />
+    <NavigationProperty Name="tbUsuaios1" Relationship="Self.FK_dbo_tbEventoDetalle_UsuarioModificacion" FromRole="tbEventoDetalle" ToRole="tbUsuaios" />
+    <NavigationProperty Name="tbParticipantes" Relationship="Self.FK_dbo_tbEventoDetallea_dbo_tbParticipantes_par_Id" FromRole="tbEventoDetalle" ToRole="tbParticipantes" />
+  </EntityType>
+  <EntityType Name="tbEventos">
+    <Key>
+      <PropertyRef Name="event_Id" />
+    </Key>
+    <Property Name="event_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="event_Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ciu_Id" Type="Int32" />
+    <Property Name="tipoE_Id" Type="Int32" />
+    <Property Name="event_Fecha" Type="DateTime" Precision="0" />
+    <Property Name="event_Hora" Type="Time" Precision="7" />
+    <Property Name="event_Presupuesto" Type="Decimal" Precision="16" Scale="2" />
+    <Property Name="emp_Id" Type="Int32" />
+    <Property Name="event_Estado" Type="Boolean" />
+    <Property Name="usu_UsuarioCreacion" Type="Int32" />
+    <Property Name="event_FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="usu_UsuarioModificacion" Type="Int32" />
+    <Property Name="event_FechaModificacion" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tbCiudades" Relationship="Self.FK_dbo_tbEventos_dbo_tbCiudades_ciu_Id" FromRole="tbEventos" ToRole="tbCiudades" />
+    <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_dbo_tbEventos_dbo_tbEmpleados_emp_Id" FromRole="tbEventos" ToRole="tbEmpleados" />
+    <NavigationProperty Name="tbEventoDetalle" Relationship="Self.FK_dbo_tbEventoDetalle_dbo_tbEventos_event_Id" FromRole="tbEventos" ToRole="tbEventoDetalle" />
+    <NavigationProperty Name="tbTiposEventos" Relationship="Self.FK_dbo_tbEventos_dbo_tbTiposEventos" FromRole="tbEventos" ToRole="tbTiposEventos" />
+    <NavigationProperty Name="tbUsuaios" Relationship="Self.FK_dbo_tbEventos_UsuarioCreacion" FromRole="tbEventos" ToRole="tbUsuaios" />
+    <NavigationProperty Name="tbUsuaios1" Relationship="Self.FK_dbo_tbEventos_UsuarioModificacion" FromRole="tbEventos" ToRole="tbUsuaios" />
+  </EntityType>
+  <EntityType Name="tbOcupaciones">
+    <Key>
+      <PropertyRef Name="ocu_Id" />
+    </Key>
+    <Property Name="ocu_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ocu_Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ocu_Estado" Type="Boolean" />
+    <Property Name="usu_UsuarioCreacion" Type="Int32" />
+    <Property Name="ocu_FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="usu_UsuarioModificacion" Type="Int32" />
+    <Property Name="ocu_FechaModificacion" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_dbo_tbEmpleados_tbOcupaciones_ocu_Id" FromRole="tbOcupaciones" ToRole="tbEmpleados" />
+    <NavigationProperty Name="tbUsuaios" Relationship="Self.FK_dbo_tbOcupaciones_UsuarioCreacion" FromRole="tbOcupaciones" ToRole="tbUsuaios" />
+    <NavigationProperty Name="tbUsuaios1" Relationship="Self.FK_dbo_tbOcupaciones_UsuarioModificacion" FromRole="tbOcupaciones" ToRole="tbUsuaios" />
+  </EntityType>
+  <EntityType Name="tbParticipantes">
+    <Key>
+      <PropertyRef Name="par_Id" />
+    </Key>
+    <Property Name="par_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="par_PrimerNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="par_SegundoNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="par_PrimerApellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="par_SegundoApellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="par_Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="par_FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="estad_Id" Type="Int32" Nullable="false" />
+    <Property Name="ciu_Id" Type="Int32" Nullable="false" />
+    <Property Name="par_Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="par_Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="par_Estado" Type="Boolean" />
+    <Property Name="usu_UsuarioCreacion" Type="Int32" />
+    <Property Name="par_FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="usu_UsuarioModificacion" Type="Int32" />
+    <Property Name="par_FechaModificacion" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tbCiudades" Relationship="Self.FK_dbo_tbEstadosCiviles_tbCiudades_ciu_Id" FromRole="tbParticipantes" ToRole="tbCiudades" />
+    <NavigationProperty Name="tbEstadosCiviles" Relationship="Self.FK_dbo_tbEstadosCiviles_tbParticipantes_estad_Id" FromRole="tbParticipantes" ToRole="tbEstadosCiviles" />
+    <NavigationProperty Name="tbEventoDetalle" Relationship="Self.FK_dbo_tbEventoDetallea_dbo_tbParticipantes_par_Id" FromRole="tbParticipantes" ToRole="tbEventoDetalle" />
+    <NavigationProperty Name="tbUsuaios" Relationship="Self.FK_dbo_tbParticipantes_UsuarioCreacion" FromRole="tbParticipantes" ToRole="tbUsuaios" />
+    <NavigationProperty Name="tbUsuaios1" Relationship="Self.FK_dbo_tbParticipantes_UsuarioModificacion" FromRole="tbParticipantes" ToRole="tbUsuaios" />
+  </EntityType>
+  <EntityType Name="tbTiposEventos">
+    <Key>
+      <PropertyRef Name="tipoE_Id" />
+    </Key>
+    <Property Name="tipoE_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipoE_Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="tipoE_Estado" Type="Boolean" />
+    <Property Name="usu_UsuarioCreacion" Type="Int32" />
+    <Property Name="tipoE_FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="usu_UsuarioModificacion" Type="Int32" />
+    <Property Name="tipoE_FechaModificacion" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tbEventos" Relationship="Self.FK_dbo_tbEventos_dbo_tbTiposEventos" FromRole="tbTiposEventos" ToRole="tbEventos" />
+    <NavigationProperty Name="tbUsuaios" Relationship="Self.FK_dbo_tbTiposEventos_dep_UsuarioCreacion" FromRole="tbTiposEventos" ToRole="tbUsuaios" />
+    <NavigationProperty Name="tbUsuaios1" Relationship="Self.FK_dbo_tbTiposEventos_dep_UsuarioModificacion" FromRole="tbTiposEventos" ToRole="tbUsuaios" />
+  </EntityType>
+  <EntityType Name="tbUsuaios">
+    <Key>
+      <PropertyRef Name="usu_Id" />
+    </Key>
+    <Property Name="usu_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="usu_Usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="usu_Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="usu_Admin" Type="Boolean" />
+    <Property Name="usu_Estado" Type="Boolean" />
+    <Property Name="usu_UsuarioCreacion" Type="Int32" />
+    <Property Name="usu_FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="usu_UsuarioModificacion" Type="Int32" />
+    <Property Name="usu_FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="emp_id" Type="Int32" />
+    <NavigationProperty Name="tbCiudades" Relationship="Self.FK_dbo_tbCiudades_dep_UsuarioCreacion" FromRole="tbUsuaios" ToRole="tbCiudades" />
+    <NavigationProperty Name="tbCiudades1" Relationship="Self.FK_dbo_tbCiudades_dep_UsuarioModificacion" FromRole="tbUsuaios" ToRole="tbCiudades" />
+    <NavigationProperty Name="tbDepartamentos" Relationship="Self.FK_dbo_tbDepartamentos_dep_UsuarioCreacion" FromRole="tbUsuaios" ToRole="tbDepartamentos" />
+    <NavigationProperty Name="tbDepartamentos1" Relationship="Self.FK_dbo_tbDepartamentos_dep_UsuarioModificacion" FromRole="tbUsuaios" ToRole="tbDepartamentos" />
+    <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_dbo_tbEmpleados_UsuarioCreacion" FromRole="tbUsuaios" ToRole="tbEmpleados" />
+    <NavigationProperty Name="tbEmpleados1" Relationship="Self.FK_dbo_tbEmpleados_UsuarioModificacion" FromRole="tbUsuaios" ToRole="tbEmpleados" />
+    <NavigationProperty Name="tbEmpleados2" Relationship="Self.FK_dbo_tbUsuaios_tbEmpleados_emp_id" FromRole="tbUsuaios" ToRole="tbEmpleados" />
+    <NavigationProperty Name="tbEstadosCiviles" Relationship="Self.FK_dbo_tbEstadosCiviles_UsuarioCreacion" FromRole="tbUsuaios" ToRole="tbEstadosCiviles" />
+    <NavigationProperty Name="tbEstadosCiviles1" Relationship="Self.FK_dbo_tbEstadosCiviles_UsuarioModificacion" FromRole="tbUsuaios" ToRole="tbEstadosCiviles" />
+    <NavigationProperty Name="tbEventoDetalle" Relationship="Self.FK_dbo_tbEventoDetalle_UsuarioCreacion" FromRole="tbUsuaios" ToRole="tbEventoDetalle" />
+    <NavigationProperty Name="tbEventoDetalle1" Relationship="Self.FK_dbo_tbEventoDetalle_UsuarioModificacion" FromRole="tbUsuaios" ToRole="tbEventoDetalle" />
+    <NavigationProperty Name="tbEventos" Relationship="Self.FK_dbo_tbEventos_UsuarioCreacion" FromRole="tbUsuaios" ToRole="tbEventos" />
+    <NavigationProperty Name="tbEventos1" Relationship="Self.FK_dbo_tbEventos_UsuarioModificacion" FromRole="tbUsuaios" ToRole="tbEventos" />
+    <NavigationProperty Name="tbOcupaciones" Relationship="Self.FK_dbo_tbOcupaciones_UsuarioCreacion" FromRole="tbUsuaios" ToRole="tbOcupaciones" />
+    <NavigationProperty Name="tbOcupaciones1" Relationship="Self.FK_dbo_tbOcupaciones_UsuarioModificacion" FromRole="tbUsuaios" ToRole="tbOcupaciones" />
+    <NavigationProperty Name="tbParticipantes" Relationship="Self.FK_dbo_tbParticipantes_UsuarioCreacion" FromRole="tbUsuaios" ToRole="tbParticipantes" />
+    <NavigationProperty Name="tbParticipantes1" Relationship="Self.FK_dbo_tbParticipantes_UsuarioModificacion" FromRole="tbUsuaios" ToRole="tbParticipantes" />
+    <NavigationProperty Name="tbTiposEventos" Relationship="Self.FK_dbo_tbTiposEventos_dep_UsuarioCreacion" FromRole="tbUsuaios" ToRole="tbTiposEventos" />
+    <NavigationProperty Name="tbTiposEventos1" Relationship="Self.FK_dbo_tbTiposEventos_dep_UsuarioModificacion" FromRole="tbUsuaios" ToRole="tbTiposEventos" />
+    <NavigationProperty Name="tbUsuaios1" Relationship="Self.FK_dbo_tbUsuaios_tbUsuaios_usu_usuarioCreacion" FromRole="tbUsuaios" ToRole="tbUsuaios1" />
+    <NavigationProperty Name="tbUsuaios2" Relationship="Self.FK_dbo_tbUsuaios_tbUsuaios_usu_usuarioCreacion" FromRole="tbUsuaios1" ToRole="tbUsuaios" />
+    <NavigationProperty Name="tbUsuaios11" Relationship="Self.FK_dbo_tbUsuaios_tbUsuaios_usu_UsuarioModificacion" FromRole="tbUsuaios" ToRole="tbUsuaios1" />
+    <NavigationProperty Name="tbUsuaios3" Relationship="Self.FK_dbo_tbUsuaios_tbUsuaios_usu_UsuarioModificacion" FromRole="tbUsuaios1" ToRole="tbUsuaios" />
+  </EntityType>
+  <Association Name="FK_dbo_tbCiudades_dep_UsuarioCreacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbCiudades" Type="Self.tbCiudades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbCiudades">
+        <PropertyRef Name="usu_UsuarioCreacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbCiudades_dep_UsuarioModificacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbCiudades" Type="Self.tbCiudades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbCiudades">
+        <PropertyRef Name="usu_UsuarioModificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbEmpleados_tbCiudades_ciu_Id">
+    <End Role="tbCiudades" Type="Self.tbCiudades" Multiplicity="1" />
+    <End Role="tbEmpleados" Type="Self.tbEmpleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCiudades">
+        <PropertyRef Name="ciu_Id" />
+      </Principal>
+      <Dependent Role="tbEmpleados">
+        <PropertyRef Name="ciu_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbEstadosCiviles_tbCiudades_ciu_Id">
+    <End Role="tbCiudades" Type="Self.tbCiudades" Multiplicity="1" />
+    <End Role="tbParticipantes" Type="Self.tbParticipantes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCiudades">
+        <PropertyRef Name="ciu_Id" />
+      </Principal>
+      <Dependent Role="tbParticipantes">
+        <PropertyRef Name="ciu_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbEventos_dbo_tbCiudades_ciu_Id">
+    <End Role="tbCiudades" Type="Self.tbCiudades" Multiplicity="0..1" />
+    <End Role="tbEventos" Type="Self.tbEventos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCiudades">
+        <PropertyRef Name="ciu_Id" />
+      </Principal>
+      <Dependent Role="tbEventos">
+        <PropertyRef Name="ciu_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ubicacion_tbDepartamentos_tbCiudades_dep_Id">
+    <End Role="tbDepartamentos" Type="Self.tbDepartamentos" Multiplicity="0..1" />
+    <End Role="tbCiudades" Type="Self.tbCiudades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbDepartamentos">
+        <PropertyRef Name="dep_Id" />
+      </Principal>
+      <Dependent Role="tbCiudades">
+        <PropertyRef Name="dep_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbDepartamentos_dep_UsuarioCreacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbDepartamentos" Type="Self.tbDepartamentos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbDepartamentos">
+        <PropertyRef Name="usu_UsuarioCreacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbDepartamentos_dep_UsuarioModificacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbDepartamentos" Type="Self.tbDepartamentos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbDepartamentos">
+        <PropertyRef Name="usu_UsuarioModificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbEmpleados_tbOcupaciones_ocu_Id">
+    <End Role="tbOcupaciones" Type="Self.tbOcupaciones" Multiplicity="0..1" />
+    <End Role="tbEmpleados" Type="Self.tbEmpleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbOcupaciones">
+        <PropertyRef Name="ocu_Id" />
+      </Principal>
+      <Dependent Role="tbEmpleados">
+        <PropertyRef Name="ocu_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbEmpleados_tbParticipantes_estad_Id">
+    <End Role="tbEstadosCiviles" Type="Self.tbEstadosCiviles" Multiplicity="1" />
+    <End Role="tbEmpleados" Type="Self.tbEmpleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbEstadosCiviles">
+        <PropertyRef Name="estad_Id" />
+      </Principal>
+      <Dependent Role="tbEmpleados">
+        <PropertyRef Name="estad_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbEmpleados_UsuarioCreacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbEmpleados" Type="Self.tbEmpleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbEmpleados">
+        <PropertyRef Name="usu_UsuarioCreacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbEmpleados_UsuarioModificacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbEmpleados" Type="Self.tbEmpleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbEmpleados">
+        <PropertyRef Name="usu_UsuarioModificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbEventos_dbo_tbEmpleados_emp_Id">
+    <End Role="tbEmpleados" Type="Self.tbEmpleados" Multiplicity="0..1" />
+    <End Role="tbEventos" Type="Self.tbEventos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbEmpleados">
+        <PropertyRef Name="emp_Id" />
+      </Principal>
+      <Dependent Role="tbEventos">
+        <PropertyRef Name="emp_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbUsuaios_tbEmpleados_emp_id">
+    <End Role="tbEmpleados" Type="Self.tbEmpleados" Multiplicity="0..1" />
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbEmpleados">
+        <PropertyRef Name="emp_Id" />
+      </Principal>
+      <Dependent Role="tbUsuaios">
+        <PropertyRef Name="emp_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbEstadosCiviles_tbParticipantes_estad_Id">
+    <End Role="tbEstadosCiviles" Type="Self.tbEstadosCiviles" Multiplicity="1" />
+    <End Role="tbParticipantes" Type="Self.tbParticipantes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbEstadosCiviles">
+        <PropertyRef Name="estad_Id" />
+      </Principal>
+      <Dependent Role="tbParticipantes">
+        <PropertyRef Name="estad_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbEstadosCiviles_UsuarioCreacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbEstadosCiviles" Type="Self.tbEstadosCiviles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbEstadosCiviles">
+        <PropertyRef Name="usu_UsuarioCreacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbEstadosCiviles_UsuarioModificacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbEstadosCiviles" Type="Self.tbEstadosCiviles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbEstadosCiviles">
+        <PropertyRef Name="usu_UsuarioModificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbEventoDetalle_dbo_tbEventos_event_Id">
+    <End Role="tbEventos" Type="Self.tbEventos" Multiplicity="0..1" />
+    <End Role="tbEventoDetalle" Type="Self.tbEventoDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbEventos">
+        <PropertyRef Name="event_Id" />
+      </Principal>
+      <Dependent Role="tbEventoDetalle">
+        <PropertyRef Name="event_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbEventoDetalle_UsuarioCreacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbEventoDetalle" Type="Self.tbEventoDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbEventoDetalle">
+        <PropertyRef Name="usu_UsuarioCreacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbEventoDetalle_UsuarioModificacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbEventoDetalle" Type="Self.tbEventoDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbEventoDetalle">
+        <PropertyRef Name="usu_UsuarioModificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbEventoDetallea_dbo_tbParticipantes_par_Id">
+    <End Role="tbParticipantes" Type="Self.tbParticipantes" Multiplicity="0..1" />
+    <End Role="tbEventoDetalle" Type="Self.tbEventoDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbParticipantes">
+        <PropertyRef Name="par_Id" />
+      </Principal>
+      <Dependent Role="tbEventoDetalle">
+        <PropertyRef Name="par_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbEventos_dbo_tbTiposEventos">
+    <End Role="tbTiposEventos" Type="Self.tbTiposEventos" Multiplicity="0..1" />
+    <End Role="tbEventos" Type="Self.tbEventos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbTiposEventos">
+        <PropertyRef Name="tipoE_Id" />
+      </Principal>
+      <Dependent Role="tbEventos">
+        <PropertyRef Name="tipoE_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbEventos_UsuarioCreacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbEventos" Type="Self.tbEventos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbEventos">
+        <PropertyRef Name="usu_UsuarioCreacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbEventos_UsuarioModificacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbEventos" Type="Self.tbEventos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbEventos">
+        <PropertyRef Name="usu_UsuarioModificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbOcupaciones_UsuarioCreacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbOcupaciones" Type="Self.tbOcupaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbOcupaciones">
+        <PropertyRef Name="usu_UsuarioCreacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbOcupaciones_UsuarioModificacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbOcupaciones" Type="Self.tbOcupaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbOcupaciones">
+        <PropertyRef Name="usu_UsuarioModificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbParticipantes_UsuarioCreacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbParticipantes" Type="Self.tbParticipantes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbParticipantes">
+        <PropertyRef Name="usu_UsuarioCreacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbParticipantes_UsuarioModificacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbParticipantes" Type="Self.tbParticipantes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbParticipantes">
+        <PropertyRef Name="usu_UsuarioModificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbTiposEventos_dep_UsuarioCreacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbTiposEventos" Type="Self.tbTiposEventos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbTiposEventos">
+        <PropertyRef Name="usu_UsuarioCreacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbTiposEventos_dep_UsuarioModificacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbTiposEventos" Type="Self.tbTiposEventos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbTiposEventos">
+        <PropertyRef Name="usu_UsuarioModificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbUsuaios_tbUsuaios_usu_usuarioCreacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbUsuaios1" Type="Self.tbUsuaios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbUsuaios1">
+        <PropertyRef Name="usu_UsuarioCreacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbUsuaios_tbUsuaios_usu_UsuarioModificacion">
+    <End Role="tbUsuaios" Type="Self.tbUsuaios" Multiplicity="0..1" />
+    <End Role="tbUsuaios1" Type="Self.tbUsuaios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuaios">
+        <PropertyRef Name="usu_Id" />
+      </Principal>
+      <Dependent Role="tbUsuaios1">
+        <PropertyRef Name="usu_UsuarioModificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbEventosEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbCiudades" EntityType="Self.tbCiudades" />
+    <EntitySet Name="tbDepartamentos" EntityType="Self.tbDepartamentos" />
+    <EntitySet Name="tbEmpleados" EntityType="Self.tbEmpleados" />
+    <EntitySet Name="tbEstadosCiviles" EntityType="Self.tbEstadosCiviles" />
+    <EntitySet Name="tbEventoDetalle" EntityType="Self.tbEventoDetalle" />
+    <EntitySet Name="tbEventos" EntityType="Self.tbEventos" />
+    <EntitySet Name="tbOcupaciones" EntityType="Self.tbOcupaciones" />
+    <EntitySet Name="tbParticipantes" EntityType="Self.tbParticipantes" />
+    <EntitySet Name="tbTiposEventos" EntityType="Self.tbTiposEventos" />
+    <EntitySet Name="tbUsuaios" EntityType="Self.tbUsuaios" />
+    <AssociationSet Name="FK_dbo_tbCiudades_dep_UsuarioCreacion" Association="Self.FK_dbo_tbCiudades_dep_UsuarioCreacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbCiudades" EntitySet="tbCiudades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbCiudades_dep_UsuarioModificacion" Association="Self.FK_dbo_tbCiudades_dep_UsuarioModificacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbCiudades" EntitySet="tbCiudades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbEmpleados_tbCiudades_ciu_Id" Association="Self.FK_dbo_tbEmpleados_tbCiudades_ciu_Id">
+      <End Role="tbCiudades" EntitySet="tbCiudades" />
+      <End Role="tbEmpleados" EntitySet="tbEmpleados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbEstadosCiviles_tbCiudades_ciu_Id" Association="Self.FK_dbo_tbEstadosCiviles_tbCiudades_ciu_Id">
+      <End Role="tbCiudades" EntitySet="tbCiudades" />
+      <End Role="tbParticipantes" EntitySet="tbParticipantes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbEventos_dbo_tbCiudades_ciu_Id" Association="Self.FK_dbo_tbEventos_dbo_tbCiudades_ciu_Id">
+      <End Role="tbCiudades" EntitySet="tbCiudades" />
+      <End Role="tbEventos" EntitySet="tbEventos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ubicacion_tbDepartamentos_tbCiudades_dep_Id" Association="Self.FK_dbo_ubicacion_tbDepartamentos_tbCiudades_dep_Id">
+      <End Role="tbDepartamentos" EntitySet="tbDepartamentos" />
+      <End Role="tbCiudades" EntitySet="tbCiudades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbDepartamentos_dep_UsuarioCreacion" Association="Self.FK_dbo_tbDepartamentos_dep_UsuarioCreacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbDepartamentos" EntitySet="tbDepartamentos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbDepartamentos_dep_UsuarioModificacion" Association="Self.FK_dbo_tbDepartamentos_dep_UsuarioModificacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbDepartamentos" EntitySet="tbDepartamentos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbEmpleados_tbOcupaciones_ocu_Id" Association="Self.FK_dbo_tbEmpleados_tbOcupaciones_ocu_Id">
+      <End Role="tbOcupaciones" EntitySet="tbOcupaciones" />
+      <End Role="tbEmpleados" EntitySet="tbEmpleados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbEmpleados_tbParticipantes_estad_Id" Association="Self.FK_dbo_tbEmpleados_tbParticipantes_estad_Id">
+      <End Role="tbEstadosCiviles" EntitySet="tbEstadosCiviles" />
+      <End Role="tbEmpleados" EntitySet="tbEmpleados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbEmpleados_UsuarioCreacion" Association="Self.FK_dbo_tbEmpleados_UsuarioCreacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbEmpleados" EntitySet="tbEmpleados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbEmpleados_UsuarioModificacion" Association="Self.FK_dbo_tbEmpleados_UsuarioModificacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbEmpleados" EntitySet="tbEmpleados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbEventos_dbo_tbEmpleados_emp_Id" Association="Self.FK_dbo_tbEventos_dbo_tbEmpleados_emp_Id">
+      <End Role="tbEmpleados" EntitySet="tbEmpleados" />
+      <End Role="tbEventos" EntitySet="tbEventos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbUsuaios_tbEmpleados_emp_id" Association="Self.FK_dbo_tbUsuaios_tbEmpleados_emp_id">
+      <End Role="tbEmpleados" EntitySet="tbEmpleados" />
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbEstadosCiviles_tbParticipantes_estad_Id" Association="Self.FK_dbo_tbEstadosCiviles_tbParticipantes_estad_Id">
+      <End Role="tbEstadosCiviles" EntitySet="tbEstadosCiviles" />
+      <End Role="tbParticipantes" EntitySet="tbParticipantes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbEstadosCiviles_UsuarioCreacion" Association="Self.FK_dbo_tbEstadosCiviles_UsuarioCreacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbEstadosCiviles" EntitySet="tbEstadosCiviles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbEstadosCiviles_UsuarioModificacion" Association="Self.FK_dbo_tbEstadosCiviles_UsuarioModificacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbEstadosCiviles" EntitySet="tbEstadosCiviles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbEventoDetalle_dbo_tbEventos_event_Id" Association="Self.FK_dbo_tbEventoDetalle_dbo_tbEventos_event_Id">
+      <End Role="tbEventos" EntitySet="tbEventos" />
+      <End Role="tbEventoDetalle" EntitySet="tbEventoDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbEventoDetalle_UsuarioCreacion" Association="Self.FK_dbo_tbEventoDetalle_UsuarioCreacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbEventoDetalle" EntitySet="tbEventoDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbEventoDetalle_UsuarioModificacion" Association="Self.FK_dbo_tbEventoDetalle_UsuarioModificacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbEventoDetalle" EntitySet="tbEventoDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbEventoDetallea_dbo_tbParticipantes_par_Id" Association="Self.FK_dbo_tbEventoDetallea_dbo_tbParticipantes_par_Id">
+      <End Role="tbParticipantes" EntitySet="tbParticipantes" />
+      <End Role="tbEventoDetalle" EntitySet="tbEventoDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbEventos_dbo_tbTiposEventos" Association="Self.FK_dbo_tbEventos_dbo_tbTiposEventos">
+      <End Role="tbTiposEventos" EntitySet="tbTiposEventos" />
+      <End Role="tbEventos" EntitySet="tbEventos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbEventos_UsuarioCreacion" Association="Self.FK_dbo_tbEventos_UsuarioCreacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbEventos" EntitySet="tbEventos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbEventos_UsuarioModificacion" Association="Self.FK_dbo_tbEventos_UsuarioModificacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbEventos" EntitySet="tbEventos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbOcupaciones_UsuarioCreacion" Association="Self.FK_dbo_tbOcupaciones_UsuarioCreacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbOcupaciones" EntitySet="tbOcupaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbOcupaciones_UsuarioModificacion" Association="Self.FK_dbo_tbOcupaciones_UsuarioModificacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbOcupaciones" EntitySet="tbOcupaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbParticipantes_UsuarioCreacion" Association="Self.FK_dbo_tbParticipantes_UsuarioCreacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbParticipantes" EntitySet="tbParticipantes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbParticipantes_UsuarioModificacion" Association="Self.FK_dbo_tbParticipantes_UsuarioModificacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbParticipantes" EntitySet="tbParticipantes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbTiposEventos_dep_UsuarioCreacion" Association="Self.FK_dbo_tbTiposEventos_dep_UsuarioCreacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbTiposEventos" EntitySet="tbTiposEventos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbTiposEventos_dep_UsuarioModificacion" Association="Self.FK_dbo_tbTiposEventos_dep_UsuarioModificacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbTiposEventos" EntitySet="tbTiposEventos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbUsuaios_tbUsuaios_usu_usuarioCreacion" Association="Self.FK_dbo_tbUsuaios_tbUsuaios_usu_usuarioCreacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbUsuaios1" EntitySet="tbUsuaios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbUsuaios_tbUsuaios_usu_UsuarioModificacion" Association="Self.FK_dbo_tbUsuaios_tbUsuaios_usu_UsuarioModificacion">
+      <End Role="tbUsuaios" EntitySet="tbUsuaios" />
+      <End Role="tbUsuaios1" EntitySet="tbUsuaios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

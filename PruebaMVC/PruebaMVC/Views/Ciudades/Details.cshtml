@@ -1,0 +1,74 @@
+﻿@model PruebaMVC.Models.tbCiudades
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbCiudades</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ciu_descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciu_descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ciu_Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciu_Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ciu_FechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciu_FechaCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ciu_FechaModificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciu_FechaModificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuaios.usu_Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuaios.usu_Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuaios1.usu_Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuaios1.usu_Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbDepartamentos.dep_descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbDepartamentos.dep_descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ciu_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

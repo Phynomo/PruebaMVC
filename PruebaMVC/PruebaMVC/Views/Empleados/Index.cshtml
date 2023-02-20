@@ -1,0 +1,123 @@
+﻿@model IEnumerable<PruebaMVC.Models.tbEmpleados>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_PrimerNombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_SegundoNombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_PrimerApellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_SegundoApellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_Sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_FechaNacimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_Telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_FechaCreacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_FechaModificacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbCiudades.ciu_descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbOcupaciones.ocu_Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbEstadosCiviles.estad_descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbUsuaios.usu_Usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbUsuaios1.usu_Usuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_PrimerNombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_SegundoNombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_PrimerApellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_SegundoApellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_Sexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_FechaNacimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_Direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_Telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_FechaCreacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_FechaModificacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbCiudades.ciu_descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbOcupaciones.ocu_Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbEstadosCiviles.estad_descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbUsuaios.usu_Usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbUsuaios1.usu_Usuario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.emp_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.emp_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.emp_Id })
+        </td>
+    </tr>
+}
+
+</table>

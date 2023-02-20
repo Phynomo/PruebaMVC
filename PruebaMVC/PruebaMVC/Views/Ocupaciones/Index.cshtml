@@ -1,0 +1,85 @@
+﻿@model IEnumerable<PruebaMVC.Models.tbOcupaciones>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="card">
+                
+    <div class="card-header">
+                Esdra la queremos ♥ <3
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <table class="table" id="example">
+                    <tr>
+                                                        <th>
+                            @Html.DisplayNameFor(model => model.ocu_Descripcion)
+                        </th>
+                                                        <th>
+                            @Html.DisplayNameFor(model => model.ocu_Estado)
+                        </th>
+                                                        <th>
+                            @Html.DisplayNameFor(model => model.ocu_FechaCreacion)
+                        </th>
+                                                        <th>
+                            @Html.DisplayNameFor(model => model.ocu_FechaModificacion)
+                        </th>
+                                                                        <th>
+                            @Html.DisplayNameFor(model => model.tbUsuaios.usu_Usuario)
+                        </th>
+                                                        <th>
+                            @Html.DisplayNameFor(model => model.tbUsuaios1.usu_Usuario)
+                        </th>
+                                        <th>Detalles</th>
+                        <th>Editar</th>
+                        <th>Borrar</th>
+                    </tr>
+                
+                @foreach (var item in Model) {
+                    <tr>
+                                                        <td>
+                            @Html.DisplayFor(modelItem => item.ocu_Descripcion)
+                        </td>
+                                                        <td>
+                            @Html.DisplayFor(modelItem => item.ocu_Estado)
+                        </td>
+                                                        <td>
+                            @Html.DisplayFor(modelItem => item.ocu_FechaCreacion)
+                        </td>
+                                                        <td>
+                            @Html.DisplayFor(modelItem => item.ocu_FechaModificacion)
+                        </td>
+                                                                        <td>
+                            @Html.DisplayFor(modelItem => item.tbUsuaios.usu_Usuario)
+                        </td>
+                                                        <td>
+                            @Html.DisplayFor(modelItem => item.tbUsuaios1.usu_Usuario)
+                        </td>
+                                        <td>
+                        <a href="" class="btn btn-block btn-info"> @Html.ActionLink("Detalles", "Details", new { id=item.ocu_Id })</a>
+                           
+                        </td>
+                        <td>
+                        <a href="" class="btn btn-block btn-warning">@Html.ActionLink("Editar", "Edit", new { id=item.ocu_Id })</a>
+                            
+                        </td>
+                        <td>
+                        <a href="" class="btn btn-block btn-danger">@Html.ActionLink("Borrar", "Delete", new { id=item.ocu_Id })</a>
+                        </td>
+                                    </tr>
+                }
+                
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

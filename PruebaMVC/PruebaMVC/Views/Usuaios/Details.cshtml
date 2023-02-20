@@ -1,0 +1,90 @@
+﻿@model PruebaMVC.Models.tbUsuaios
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbUsuaios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_Admin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_Admin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_FechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_FechaCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_FechaModificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_FechaModificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbEmpleados2.emp_PrimerNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbEmpleados2.emp_PrimerNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuaios2.usu_Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuaios2.usu_Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuaios3.usu_Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuaios3.usu_Usuario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.usu_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

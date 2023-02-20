@@ -1,0 +1,66 @@
+﻿@model PruebaMVC.Models.tbOcupaciones
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbOcupaciones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ocu_Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ocu_Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ocu_Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ocu_Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ocu_FechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ocu_FechaCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ocu_FechaModificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ocu_FechaModificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuaios.usu_Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuaios.usu_Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUsuaios1.usu_Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUsuaios1.usu_Usuario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ocu_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
